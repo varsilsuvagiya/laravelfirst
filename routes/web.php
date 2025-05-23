@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Namecontroller;
+use App\Http\Controllers\Formcontroller;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,3 +26,27 @@ Route::get('/name/{user}', [Namecontroller::class, 'index' ]);
 Route::get('/show', [Namecontroller::class, 'show' ]);
 
 Route::view('/contact','contact.contact');
+
+//! form
+Route::view('/form','form');
+Route::post('/submit', [Formcontroller::class, 'submit' ]);
+
+//! route groups with prefix
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return "This is admin dashboard";
+    });
+    Route::get('/users', function () {
+        return "This is admin users";
+    });
+});
+
+//! route groups with controller
+Route::controller(Formcontroller::class)->group(function () {
+    Route::get('/dashboard', function () {
+        return "This is admin dashboard";
+    });
+    Route::get('/users', function () {
+        return "This is admin users";
+    });
+});
