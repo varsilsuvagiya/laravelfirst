@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Namecontroller;
 use App\Http\Controllers\Formcontroller;
 use App\Http\Controllers\Todocontroller;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,3 +55,7 @@ Route::controller(Formcontroller::class)->group(function () {
 
 //! API getting using http client
 Route::get('/todo', [Todocontroller::class, 'index']);
+
+//!session
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
