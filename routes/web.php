@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Namecontroller;
 use App\Http\Controllers\Formcontroller;
+use App\Http\Controllers\Todo;
 
 
 Route::get('/', function () {
@@ -50,3 +51,7 @@ Route::controller(Formcontroller::class)->group(function () {
         return "This is admin users";
     });
 });
+
+
+//! API getting using http client
+Route::get('/todo', [Todo::class, 'index']);
