@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Namecontroller;
 use App\Http\Controllers\Formcontroller;
-use App\Http\Controllers\Todo;
-
+use App\Http\Controllers\Todocontroller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,4 +53,4 @@ Route::controller(Formcontroller::class)->group(function () {
 
 
 //! API getting using http client
-Route::get('/todo', [Todo::class, 'index']);
+Route::get('/todo', [Todocontroller::class, 'index']);
